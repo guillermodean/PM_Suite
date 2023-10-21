@@ -21,7 +21,7 @@ def print_bear_art():
        88b ~--~ 88888 8888   8;      
         88b.  , 88888 8888   8;      
          -~  '  ~~~~  ~~~~   ~~~~   
-          P   M        S   U   I   T   E  
+
     """
     print(bear_art)
 
