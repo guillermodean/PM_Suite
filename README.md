@@ -1,6 +1,6 @@
 # PM SUITE
 
-The best solution ingenieros for engineers who need to pretend to work.
+The best solution for engineers who need to pretend to work.
 
 <hr>
 
