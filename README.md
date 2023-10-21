@@ -4,7 +4,7 @@ The best solution ingenieros for engineers who need to pretend to work.
 
 <hr>
 
-![Alt text](static/readme.png)
+![Alt text](static/img/readme.png)
 
 <hr>
 
