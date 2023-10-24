@@ -57,11 +57,14 @@ def print_pmsuite_title():
     print(title)
 
 def menu():
+    print("--------------------------------------------------------------------------------------------------------")
     print("1. Organize Desktop")
     print("2. Pomodoro Timer")
     print("3. Move Mouse Randomly")
     print("4. list organization")
-    print("5. Exit")
+    print("5. Tasks")
+    print("6. Exit")
+    print("--------------------------------------------------------------------------------------------------------")
 
 def main():
     #print_bear_art()
