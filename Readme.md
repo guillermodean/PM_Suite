@@ -1,25 +1,31 @@
-# PM Suite
+# PM Suite - Project Management for the Clueless PMs 🤔💼
 
-PM Suite is a collection of Python scripts to help you manage your desktop, enhance productivity, and have a bit of fun.
+Welcome to PM Suite, the ultimate project management solution for Project Managers who don't want to manage projects or simply have no idea how to do it!
 
 ## Features
 
-1. **Organize Desktop:** Automatically organize files on your desktop into folders based on their types.
+1. **Organize Desktop:** Keep your desktop clutter-free by letting PM Suite organize your files into mysterious folders. You won't remember where anything is, but hey, it's organized!
 
-2. **Pomodoro Timer:** Use the Pomodoro technique to boost productivity. Set a timer for focused work sessions.
+2. **List Organize Desktop:** Wondering where your files went? Use this feature to list the folders you didn't know you needed.
 
-3. **Move Mouse Randomly:** Keep your computer awake by moving the mouse cursor randomly.
+3. **Pomodoro Timer:** Boost your productivity for the 5 minutes you can stay focused. After that, well, there's always next time.
+
+4. **Tasks:** Because every PM needs a list of tasks, even if they're not entirely sure what those tasks are.
+
+5. **Encrypt:** Encrypt your most crucial project data using the most sophisticated encryption algorithm: PM-grade encryption. It's so secure even you won't be able to decrypt it.
 
 ## Getting Started
 
-### Prerequisites
+To get started, just blindly run the `main.py` script and let PM Suite take control. Don't worry; you're in capable (sort of) hands.
 
-- Python 3.x
-- Ensure required libraries are installed:
+### Economic Support
 
-  ```bash
-  pip install -r requirements.txt
+If you find yourself overwhelmed by the sheer brilliance of PM Suite, and you want to contribute to the caffeine-fueled development, consider buying us a virtual coffee:
 
-### Usage
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-blue.svg)](https://www.buymeacoffee.com/guillermodf)
 
-1. **Organize Desktop:** Automatically organize files on your desktop into folders based on their types.
+## Contributions
+
+Contributions are always welcome! If you have brilliant (or not-so-brilliant) ideas to make PM Suite even more confusing, feel free to open an issue or submit a pull request. We accept contributions in the form of memes too!
+
+Now, go forth, fellow PM, and conquer the world with the power of PM Suite! 🚀😄
