@@ -1,6 +1,6 @@
 # main.py
 
-from scripts import arrange, mickey, pomodoro
+from scripts import arrange, mickey, pomodoro, tasks
 import sys
 
 import os
@@ -60,7 +60,8 @@ def menu():
     print("1. Organize Desktop")
     print("2. Pomodoro Timer")
     print("3. Move Mouse Randomly")
-    print("4. Exit")
+    print("4. list organization")
+    print("5. Exit")
 
 def main():
     #print_bear_art()
@@ -70,7 +71,7 @@ def main():
 
     while True:
         menu()
-        choice = input("Select an option (1-4): ")
+        choice = input("Select an option (1-6): ")
 
         if choice == '1':
             arrange.organize_desktop()
@@ -78,11 +79,15 @@ def main():
             pomodoro.pomodoro_timer()
         elif choice == '3':
             mickey.move_mouse_randomly()
-        elif choice == '4':
+        elif choice =='4':
+            arrange.list_organization_folder()
+        elif choice == '5':
+            tasks.listtask()
+        elif choice == '6':
             print("Exiting.")
             sys.exit()
         else:
-            print("Invalid choice. Please enter a number between 1 and 4.")
+            print("Invalid choice. Please enter a number between 1 and 6.")
 
 if __name__ == "__main__":
     main()

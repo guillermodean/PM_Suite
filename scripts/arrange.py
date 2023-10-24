@@ -67,5 +67,23 @@ def list_organization_folder():
         for file in files:
             print(os.path.join(root, file))
 
+def list_organization_folder():
+    # Get the desktop path for the active user on Windows
+    desktop_path = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop')
+
+    # Check if the organization folder exists
+    organization_path = os.path.join(desktop_path, 'organization')
+    if not os.path.exists(organization_path):
+        print("Organization folder not found.")
+        return
+
+    # List the contents of the organization folder
+    print("Contents of the organization folder:")
+    for root, dirs, files in os.walk(organization_path):
+        for file in files:
+            print(os.path.join(root, file))
+        for directory in dirs:
+            print(os.path.join(root, directory))
+
 if __name__ == "__main__":
     organize_desktop()
