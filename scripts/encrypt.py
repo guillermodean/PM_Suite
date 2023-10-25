@@ -1,127 +1,52 @@
+# encrypt_decrypt_secrets.py
+
 import os
 from cryptography.fernet import Fernet
 
-files = []
-folders = []
+def generate_key():
+    # Generate a key and save it to the organization folder
+    key = Fernet.generate_key()
+    key_path = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop', 'organization', 'secret_key.key')
+    
+    with open(key_path, 'wb') as key_file:
+        key_file.write(key)
 
+    print(f"Encryption key generated and saved at: {key_path}")
+    return key
 
-class Encrypt:
-    def __init__(self):
-        self.key = ""
-        return
-        ## SELECT FOLDER ##
-    @classmethod
-    def selectfolder(self):
-        folder = input("Subdirectorios que se vayan a encriptar")
-        return folder
+def encrypt_folder(key, folder_path):
+    cipher = Fernet(key)
 
-    ## GENERATE KEY ##
-    def generatekey(self):
-        key = Fernet.generate_key()
-        with open("thekey.key", "wb") as thekey:
-            thekey.write(key)
-            print("key generated",key)
-        return key
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            file_path = os.path.join(root, file)
 
-    ## READKEY ##
-    def readkey(self):
-        print("working directory",os.getcwd())
-        with open("thekey.key", "rb") as key:
-            secret_key = key.read()
-        return secret_key
+            with open(file_path, 'rb') as original_file:
+                original_data = original_file.read()
 
-    ## FIND FILEs ##
-    def findFiles(self, folderin):
-        print("working directory", os.getcwd())
-        for file in os.listdir():
-            if file == "main.py" or file == "thekey.key":
-                continue
-            if os.path.isfile(file):
-                print(file)
-                files.append(file)
-            else:
-                if file == folderin:
-                    folders.append(file)
+            encrypted_data = cipher.encrypt(original_data)
 
-        for folder in folders:
-            if folder == folderin:
-                os.chdir(os.path.join(os.path.dirname(__file__), folder))
-                print("working directory", os.getcwd())
-                for file in os.listdir():
-                    if file == "main.py" or file == "thekey.key":
-                        continue
-                    print(file)
-                    files.append(file)
-        os.chdir(os.path.join(os.path.dirname(__file__), "."))
-        print("working directory", os.getcwd())
-        print("files", files)
-        print("folders", folders)
-        return files, folders
+            with open(file_path, 'wb') as encrypted_file:
+                encrypted_file.write(encrypted_data)
 
-    def encrypt(self, files, folderin, key):
-        ## ENCRYPT ##
-        for file in os.listdir():
-            for filel in files:
-                if file == filel and file != "thekey.key":
-                    with open(file, "rb") as the_file:
-                        contents = the_file.read()
-                    contents_encrypted = Fernet(key).encrypt(contents)
-                    with open(file, "wb") as the_file:
-                        the_file.write(contents_encrypted)
-        os.chdir(os.path.join(os.path.dirname(__file__), folderin))
-        print(os.getcwd())
+    print(f"Folder '{folder_path}' encrypted successfully.")
 
-        for file in os.listdir():
-            print(file)
-            for filel in files:
-                if file == filel:
-                    with open(file, "rb") as the_file:
-                        contents = the_file.read()
-                    contents_encrypted = Fernet(key).encrypt(contents)
-                    with open(file, "wb") as the_file:
-                        the_file.write(contents_encrypted)
+def decrypt_folder(key_path, folder_path):
+    with open(key_path, 'rb') as key_file:
+        key = key_file.read()
 
-        os.chdir(os.path.join(os.path.dirname(__file__), '.'))
-        print("working directory",os.getcwd())
-        return print("files encripted")
+    cipher = Fernet(key)
 
-    def decrypt(self, files, folderin, key):
-        print(key)
-        ## DECRYPT ##
-        for file in os.listdir():
-            for filel in files:
-                if file == filel:
-                    with open(file, "rb") as the_file:
-                        contents = the_file.read()
-                    contents_decrypted = Fernet(key).decrypt(contents)
-                    with open(file, "wb") as the_file:
-                        the_file.write(contents_decrypted)
-        os.chdir(os.path.join(os.path.dirname(__file__), folderin))
-        print(os.getcwd())
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            file_path = os.path.join(root, file)
 
-        for file in os.listdir():
-            print(file)
-            for filel in files:
-                if file == filel:
-                    print("entra")
-                    with open(file, "rb") as the_file:
-                        print(contents)
-                        contents = the_file.read()
-                    contents_decrypted = Fernet(key).decrypt(contents)
-                    with open(file, "wb") as the_file:
-                        the_file.write(contents_decrypted)
+            with open(file_path, 'rb') as encrypted_file:
+                encrypted_data = encrypted_file.read()
 
-        return print("files decripted")
-#TODO create Encryptonefile,Decryptonefile
-#TODO create Encrypttext,Decrypttext
-encrypt=Encrypt()
-subidr="files"
-#key=encrypt.generatekey()
-files,folders=encrypt.findFiles(folderin=subidr)
-#encrypt.encrypt(files=files, folderin=subidr, key=key)
-key=encrypt.readkey()
-encrypt.decrypt(folderin=subidr,files=files,key=key)
+            decrypted_data = cipher.decrypt(encrypted_data)
 
-#encriptar archivos
-def encriptar():
-    key = encrypt.generatekey()
+            with open(file_path, 'wb') as decrypted_file:
+                decrypted_file.write(decrypted_data)
+
+    print(f"Folder '{folder_path}' decrypted successfully.")

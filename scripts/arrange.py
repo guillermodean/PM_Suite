@@ -2,7 +2,20 @@ import os
 import shutil
 import getpass
 
+
+def create_secrets_folder():
+    # Create the 'secrets' folder if it doesn't exist
+    desktop_path = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop')
+    organization_path = os.path.join(desktop_path, 'organization')
+    secrets_folder_path = os.path.join(organization_path, 'secrets')
+
+    if not os.path.exists(secrets_folder_path):
+        os.makedirs(secrets_folder_path)
+        print(f"Created 'secrets' folder at {secrets_folder_path}")
+
 def organize_desktop():
+    
+    create_secrets_folder()
     # Get the desktop path for the active user on Windows
     desktop_path = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop')
 
