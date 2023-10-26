@@ -1,6 +1,6 @@
 # main.py
 
-from scripts import arrange, mickey, pomodoro, tasks, encrypt
+from scripts import arrange, mickey, pomodoro, tasks, encrypt, intelligent
 import sys
 
 import os
@@ -59,7 +59,8 @@ def menu():
     print("5. Tasks")
     print("6. Encrypt 'secrets' Folder")
     print("7. Decrypt 'secrets' Folder")
-    print("8. Exit")
+    print("8. Find something intelligent to say in a meeting")
+    print("9. Exit")
     print("--------------------------------------------------------------------------------------------------------")
 
 def main():
@@ -70,7 +71,7 @@ def main():
 
     while True:
         menu()
-        choice = input("Select an option (1-6): ")
+        choice = input("Select an option (1-9): ")
 
         if choice == '1':
             arrange.organize_desktop()
@@ -90,8 +91,10 @@ def main():
             key_path = input("Enter the path of the encryption key file: ")
             secrets_folder_path = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop', 'organization', 'secrets')
             encrypt.decrypt_folder(key_path, secrets_folder_path)
-        
         elif choice == '8':
+            intelligent.say_something_intelligent()
+        
+        elif choice == '9':
             print("Exiting.")
             sys.exit()
         else:
