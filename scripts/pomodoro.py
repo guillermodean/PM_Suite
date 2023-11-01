@@ -7,6 +7,7 @@ from scripts import tasks
 def select_task(listTask):
     while True:
         tasks.show_tasks(listTask)
+
         try:
             selected_index = int(input("Select a task by entering the number (0 to cancel): "))
             if 0 <= selected_index <= len(listTask):
@@ -18,7 +19,9 @@ def select_task(listTask):
 
 def pomodoro_timer():
     listTask = tasks.load_tasks()
-
+    new_task=input("Do you want to start pomodoro for a new task? Y/N")
+    if new_task == "Y" or new_task == "y":
+        tasks.add_task(listTask)
     selected_task = select_task(listTask)
     if selected_task is None:
         print( "do you want to create a new task")
@@ -45,7 +48,7 @@ def pomodoro_timer():
 
     selected_task['time_spent'] += task_duration * 60
     tasks.save_tasks(listTask)
-    
+
     # Notification when time is up
     notification_title = "Pomodoro Completed"
     notification_message = f"Task: {task_name}\nTime: {task_duration} minutes is up!"

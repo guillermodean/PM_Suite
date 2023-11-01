@@ -2,5 +2,9 @@
   {
     "name": "Create an app",
     "time_spent": 60
+  },
+  {
+    "name": "Nueva tarea",
+    "time_spent": 0
   }
 ]
