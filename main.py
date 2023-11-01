@@ -1,6 +1,6 @@
 # main.py
 
-from scripts import arrange, mickey, pomodoro, tasks, encrypt, intelligent
+from scripts import arrange, mickey, pomodoro, tasks, encrypt, intelligent,excuses
 import sys
 
 import os
@@ -58,7 +58,8 @@ def menu():
     print("6. Encrypt 'secrets' Folder")
     print("7. Decrypt 'secrets' Folder")
     print("8. Find something intelligent to say in a meeting")
-    print("9. Exit")
+    print("9. Need an excuse? Project delay?")
+    print("10. Exit")
     print("--------------------------------------------------------------------------------------------------------")
 
 def main():
@@ -91,8 +92,10 @@ def main():
             encrypt.decrypt_folder(key_path, secrets_folder_path)
         elif choice == '8':
             intelligent.say_something_intelligent()
-        
         elif choice == '9':
+            excuses.need_an_excuse()
+            sys.exit()
+        elif choice == '10':
             print("Exiting.")
             sys.exit()
         else:
