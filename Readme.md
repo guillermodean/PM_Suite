@@ -42,6 +42,7 @@ Welcome to PM Suite, the ultimate project management solution for Project Manage
 - [x] Initial prototype menu
 - [x] Pomodoro timer
 - [x] Random engineering jargon
+- [x] Link the task to the pomodoro timer, time spent on a task will be added to the task.
 - [ ] Unix friendly
 - [ ] Much more...
 

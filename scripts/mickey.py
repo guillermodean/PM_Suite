@@ -5,7 +5,7 @@ import keyboard
 
 # Function to move the mouse to a random position
 def move_mouse_randomly():
-    print("Moving the mouse, press ESC key to stop it.")
+    print("Moving the mouse, press CTRL+C key to stop it.")
     try:
         print("Mickey moves...")
         while not keyboard.is_pressed(hotkey="esc"):

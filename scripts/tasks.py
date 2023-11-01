@@ -22,16 +22,17 @@ def show_tasks(tasks):
     if tasks:
         print("Current Tasks:")
         for i, task in enumerate(tasks, start=1):
-            print(f"{i}. {task}")
+            print(f"{i}. {task['name']} - Time spent: {task['time_spent']} seconds")
     else:
         print("No tasks found.")
 
 def add_task(tasks):
     # Add a new task to the list
-    new_task = input("Enter the new task: ")
+    new_task_name = input("Enter the new task name: ")
+    new_task = {"name": new_task_name, "time_spent": 0}
     tasks.append(new_task)
     save_tasks(tasks)
-    print(f"Task '{new_task}' added successfully.")
+    print(f"Task '{new_task_name}' added successfully.")
 
 def close_task(tasks):
     # Close a task by removing it from the list
@@ -40,8 +41,9 @@ def close_task(tasks):
         task_number = int(input("Enter the number of the task to close: "))
         if 1 <= task_number <= len(tasks):
             closed_task = tasks.pop(task_number - 1)
+            closed_task['time_spent'] += closed_task['duration'] * 60  # Accumulate time spent in seconds
             save_tasks(tasks)
-            print(f"Task '{closed_task}' closed successfully.")
+            print(f"Task '{closed_task['name']}' closed successfully. Time spent: {closed_task['time_spent']} seconds.")
         else:
             print("Invalid task number.")
     else:
