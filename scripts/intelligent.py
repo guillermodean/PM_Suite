@@ -20,4 +20,8 @@ def say_something_intelligent():
 
     sentence = choice(stonks)
     print("\n\t" + sentence)
-    tts.speak(sentence)
+   
+    try:
+        tts.speak(sentence)
+    except Exception as e:
+        pass
