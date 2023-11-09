@@ -94,7 +94,6 @@ def main():
             intelligent.say_something_intelligent()
         elif choice == '9':
             excuses.need_an_excuse()
-            sys.exit()
         elif choice == '10':
             print("Exiting.")
             sys.exit()

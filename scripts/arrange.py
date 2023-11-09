@@ -35,7 +35,8 @@ def organize_desktop():
         'PDFs': ['.pdf'],
         'Images': ['.png', '.jpg', '.jpeg', '.gif'],
         'Videos': ['.mp4', '.avi', '.mkv'],
-        'Music': ['.mp3', '.wav', '.flac']
+        'Music': ['.mp3', '.wav', '.flac'],
+        'Powerpoint':['.pptx','.ppts']
     }
 
     # Organize files into folders
