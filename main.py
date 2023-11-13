@@ -70,7 +70,7 @@ def main():
 
     while True:
         menu()
-        choice = input("Select an option (1-9): ")
+        choice = input("Select an option (1-10): ")
 
         if choice == '1':
             arrange.organize_desktop()
@@ -98,7 +98,7 @@ def main():
             print("Exiting.")
             sys.exit()
         else:
-            print("Invalid choice. Please enter a number between 1 and 6.")
+            print("Invalid choice. Please enter a number between 1 and 10.")
 
 if __name__ == "__main__":
     main()
