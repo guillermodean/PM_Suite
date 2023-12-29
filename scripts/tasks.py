@@ -41,9 +41,13 @@ def close_task(tasks):
         task_number = int(input("Enter the number of the task to close: "))
         if 1 <= task_number <= len(tasks):
             closed_task = tasks.pop(task_number - 1)
-            closed_task['time_spent'] += closed_task['duration'] * 60  # Accumulate time spent in seconds
-            save_tasks(tasks)
-            print(f"Task '{closed_task['name']}' closed successfully. Time spent: {closed_task['time_spent']} seconds.")
+            
+            if 'duration' in closed_task:
+                closed_task['time_spent'] += closed_task['duration'] * 60  # Accumulate time spent in seconds
+                save_tasks(tasks)
+                print(f"Task '{closed_task['name']}' closed successfully. Time spent: {closed_task['time_spent']} seconds.")
+            else:
+                print(f"Task '{closed_task['name']}' does not have a duration. Task closed without adding time.")
         else:
             print("Invalid task number.")
     else:
