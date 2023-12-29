@@ -6,5 +6,9 @@
   {
     "name": "Nueva tarea",
     "time_spent": 0
+  },
+  {
+    "name": "",
+    "time_spent": 60
   }
 ]

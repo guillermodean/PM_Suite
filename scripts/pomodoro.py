@@ -35,17 +35,15 @@ def pomodoro_timer():
     with tqdm(total=duration_seconds, desc='Time Remaining', unit='s') as progress_bar:
         # Countdown loop
         while duration_seconds > 0:
-            # Check for 'p' key (pause) or 'r' key (resume)
-            if keyboard.is_pressed('p'):
-                print("Timer paused. Press 'r' to resume.")
-                while not keyboard.is_pressed('r'):
+            # Check for 'Ctrl + Alt + P' key combination (pause)
+            if keyboard.is_pressed('ctrl+alt+p'):
+                print("Timer paused. Press 'ctrl+alt+r' to resume.")
+                while not keyboard.is_pressed('ctrl+alt+r'):
                     time.sleep(0.1)
                 print("Timer resumed.")
             else:
                 time.sleep(1)
                 duration_seconds -= 1
-                progress_bar.update(1)
-
     selected_task['time_spent'] += task_duration * 60
     tasks.save_tasks(listTask)
 
