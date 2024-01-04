@@ -3,12 +3,14 @@ import keyboard
 from plyer import notification
 from tqdm import tqdm
 from scripts import tasks
+from scripts import utils
 
 def select_task(listTask):
     while True:
         tasks.show_tasks(listTask)
 
         try:
+            utils.fancy_print("")
             selected_index = int(input("Select a task by entering the number (0 to cancel): "))
             if 0 <= selected_index <= len(listTask):
                 return listTask[selected_index - 1] if selected_index > 0 else None
@@ -18,7 +20,7 @@ def select_task(listTask):
             print("Invalid input. Please enter a number.")
 
 def pomodoro_timer():
-    listTask = tasks.load_tasks()
+    listTask = tasks.load_open_tasks()
     new_task=input("Do you want to start pomodoro for a new task? Y/N")
     if new_task == "Y" or new_task == "y":
         tasks.add_task(listTask)
@@ -26,8 +28,9 @@ def pomodoro_timer():
     if selected_task is None:
         print( "do you want to create a new task")
         return  # User canceled task selection
-    print(selected_task)
-    task_name = selected_task
+    print(selected_task.name)
+    task_name = selected_task.name
+    utils.fancy_print("")
     task_duration = int(input("Enter the duration of the Pomodoro in minutes: "))
 
     duration_seconds = task_duration * 60
@@ -44,7 +47,8 @@ def pomodoro_timer():
             else:
                 time.sleep(1)
                 duration_seconds -= 1
-    selected_task['time_spent'] += task_duration * 60
+                progress_bar.update(1)
+    selected_task.time_spent += task_duration * 60
     tasks.save_tasks(listTask)
 
     # Notification when time is up

@@ -3,3 +3,4 @@ keyboard
 tqdm
 pyfiglet
 cryptography
+tabulate

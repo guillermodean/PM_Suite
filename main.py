@@ -1,14 +1,16 @@
 # main.py
 
-from scripts import arrange, mickey, pomodoro, tasks, encrypt, intelligent,excuses
+from scripts import arrange, mickey, pomodoro, tasks, encrypt, intelligent,excuses, statistics  # Import the statistics module
 import sys
-
 import os
 import time 
-
 from pyfiglet import Figlet
 
-
+class Task:
+    def __init__(self, name, time_spent=0, status="open"):
+        self.name = name
+        self.time_spent = time_spent
+        self.status = status
 
 def print_bear_art():
     bear_art = """
@@ -59,18 +61,21 @@ def menu():
     print("7. Decrypt 'secrets' Folder")
     print("8. Find something intelligent to say in a meeting")
     print("9. Need an excuse? Project delay?")
-    print("10. Exit")
+    print("10. Show Statistics")  # New option to show statistics
+    print("11. Exit")
     print("--------------------------------------------------------------------------------------------------------")
 
 def main():
+    # Create an instance of the Task class
+    sample_task = Task("Sample Task", 30, "closed")
+
     #print_bear_art()
     print_better_logo()
     print_pmsuite_title()
 
-
     while True:
         menu()
-        choice = input("Select an option (1-10): ")
+        choice = input("Select an option (1-11): ")
 
         if choice == '1':
             arrange.organize_desktop()
@@ -78,7 +83,7 @@ def main():
             pomodoro.pomodoro_timer()
         elif choice == '3':
             mickey.move_mouse_randomly()
-        elif choice =='4':
+        elif choice == '4':
             arrange.list_organization_folder()
         elif choice == '5':
             tasks.listtask()
@@ -95,10 +100,13 @@ def main():
         elif choice == '9':
             excuses.need_an_excuse()
         elif choice == '10':
+           # Calculate and display statistics
+            statistics.main()
+        elif choice == '11':
             print("Exiting.")
             sys.exit()
         else:
-            print("Invalid choice. Please enter a number between 1 and 10.")
+            print("Invalid choice. Please enter a number between 1 and 11.")
 
 if __name__ == "__main__":
     main()

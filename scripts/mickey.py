@@ -1,6 +1,7 @@
 import ctypes
 import time
 import keyboard
+import random
 
 
 # Function to move the mouse to a random position
@@ -20,14 +21,15 @@ def move_mouse_randomly():
 
 
 def move_mouse():
-        # Get the screen dimensions
+    # Get the screen dimensions
     user32 = ctypes.windll.user32
     screen_width = user32.GetSystemMetrics(0)
     screen_height = user32.GetSystemMetrics(1)
 
     # Set the new mouse position to a random point on the screen
-    ctypes.windll.user32.SetCursorPos(
-        screen_width // 2 + int((screen_width / 2) * (2 * time.time() % 1 - 1)),
-        screen_height // 2 + int((screen_height / 2) * (2 * time.time() % 1 - 1))
-    )
+    new_x = random.randint(0, screen_width)
+    new_y = random.randint(0, screen_height)
+
+    ctypes.windll.user32.SetCursorPos(new_x, new_y)
+
 # Display message and wait for any key press to stop
