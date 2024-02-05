@@ -4,3 +4,5 @@ tqdm
 pyfiglet
 cryptography
 tabulate
+psutil
+win10toast

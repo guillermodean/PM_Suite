@@ -1,6 +1,6 @@
 import json
 from tabulate import tabulate
-from  scripts.tasks import load_closed_tasks, load_open_tasks
+from scripts.tasks import load_tasks
 
 class Task:
     def __init__(self, name, time_spent=0, status="open"):
@@ -45,9 +45,7 @@ def display_statistics(statistics):
 
 def main():
     # Example usage
-    closedtasks=load_closed_tasks()
-    opentasks= load_open_tasks()
-    tasks = closedtasks + opentasks
+    tasks = load_tasks()
     print(tasks)
 
     statistics_data = calculate_statistics(tasks)

@@ -1,13 +1,13 @@
 import time
 import keyboard
-from plyer import notification
+from win10toast import ToastNotifier
 from tqdm import tqdm
 from scripts import tasks
 from scripts import utils
 
 def select_task(listTask):
     while True:
-        tasks.show_tasks(listTask)
+        tasks.show_tasks(listTask, status="open")
 
         try:
             utils.fancy_print("")
@@ -20,13 +20,13 @@ def select_task(listTask):
             print("Invalid input. Please enter a number.")
 
 def pomodoro_timer():
-    listTask = tasks.load_open_tasks()
-    new_task=input("Do you want to start pomodoro for a new task? Y/N")
+    listTask = tasks.load_tasks()
+    new_task = input("Do you want to start pomodoro for a new task? Y/N")
     if new_task == "Y" or new_task == "y":
         tasks.add_task(listTask)
     selected_task = select_task(listTask)
     if selected_task is None:
-        print( "do you want to create a new task")
+        print("Do you want to create a new task?")
         return  # User canceled task selection
     print(selected_task.name)
     task_name = selected_task.name
@@ -34,7 +34,7 @@ def pomodoro_timer():
     task_duration = int(input("Enter the duration of the Pomodoro in minutes: "))
 
     duration_seconds = task_duration * 60
- # Setup tqdm progress bar
+    # Setup tqdm progress bar
     with tqdm(total=duration_seconds, desc='Time Remaining', unit='s') as progress_bar:
         # Countdown loop
         while duration_seconds > 0:
@@ -62,6 +62,7 @@ def pomodoro_timer():
     erase_task= input("Do you want to mark the task as completed: Y/N")
     if erase_task == "Y" or erase_task == "y":
         tasks.close_task(listTask)
+    
     print("Pomodoro completed!")
 
 if __name__ == "__main__":

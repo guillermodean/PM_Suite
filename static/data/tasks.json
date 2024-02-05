@@ -1,17 +1,50 @@
 [
   {
-    "name": "Create an app",
+    "id": 1,
+    "name": "Tarea 1",
     "time_spent": 60,
-    "status": "open"
+    "status": "closed"
   },
   {
-    "name": "Nueva tarea",
-    "time_spent": 60,
-    "status": "open"
+    "id": 2,
+    "name": "Tarea 4",
+    "time_spent": 0,
+    "status": "closed"
   },
   {
-    "name": "",
+    "id": 3,
+    "name": "asdfasdf",
+    "time_spent": 0,
+    "status": "closed"
+  },
+  {
+    "id": 4,
+    "name": "asdfasdf",
+    "time_spent": 0,
+    "status": "closed"
+  },
+  {
+    "id": 5,
+    "name": "NEw task",
     "time_spent": 120,
+    "status": "open"
+  },
+  {
+    "id": 6,
+    "name": "sadfasdfasd",
+    "time_spent": 0,
+    "status": "closed"
+  },
+  {
+    "id": 7,
+    "name": "asdfasdfasdfewerwer",
+    "time_spent": 120,
+    "status": "open"
+  },
+  {
+    "id": 8,
+    "name": "asdfasdf",
+    "time_spent": 0,
     "status": "open"
   }
 ]

@@ -2,9 +2,9 @@
 
 from scripts import arrange, mickey, pomodoro, tasks, encrypt, intelligent,excuses, statistics  # Import the statistics module
 import sys
-import os
-import time 
+from os import path
 from pyfiglet import Figlet
+
 
 class Task:
     def __init__(self, name, time_spent=0, status="open"):
@@ -46,9 +46,16 @@ def print_better_logo():
     print(logo)
 
 def print_pmsuite_title():
+    venv_path = path.dirname(sys.executable)
+    pyfiglet_path = path.join(venv_path, 'Lib', 'site-packages', 'pyfiglet')
+
+    # Specify the path to the 'slant' font file
+    font_path = path.join(pyfiglet_path, 'fonts', 'slant.flf')  # Adjust if necessary
+    sys.path.insert(0, font_path)
     fig = Figlet(font='slant')
     title = fig.renderText('PM SUITE')
     print(title)
+    sys.path.remove(font_path)
 
 def menu():
     print("--------------------------------------------------------------------------------------------------------")
@@ -64,14 +71,15 @@ def menu():
     print("10. Show Statistics")  # New option to show statistics
     print("11. Exit")
     print("--------------------------------------------------------------------------------------------------------")
-
+def get_main_dir_path():
+    return getattr(sys, '_MEIPASS', path.abspath(path.dirname(__file__)))
 def main():
     # Create an instance of the Task class
     sample_task = Task("Sample Task", 30, "closed")
 
     #print_bear_art()
     print_better_logo()
-    print_pmsuite_title()
+    # print_pmsuite_title()
 
     while True:
         menu()
@@ -89,16 +97,18 @@ def main():
             tasks.listtask()
         elif choice == '6':
             encryption_key = encrypt.generate_key()
-            secrets_folder_path = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop', 'organization', 'secrets')
+            secrets_folder_path = path.join(os.path.join(path.expanduser('~')), 'Desktop', 'organization', 'secrets')
             encrypt.encrypt_folder(encryption_key, secrets_folder_path)
         elif choice == '7':
             key_path = input("Enter the path of the encryption key file: ")
-            secrets_folder_path = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop', 'organization', 'secrets')
+            secrets_folder_path = path.join(path.join(path.expanduser('~')), 'Desktop', 'organization', 'secrets')
             encrypt.decrypt_folder(key_path, secrets_folder_path)
         elif choice == '8':
-            intelligent.say_something_intelligent()
+            mainpath = get_main_dir_path()
+            intelligent.say_something_intelligent(mainpath)
         elif choice == '9':
-            excuses.need_an_excuse()
+            mainpath = get_main_dir_path()
+            excuses.need_an_excuse(mainpath)
         elif choice == '10':
            # Calculate and display statistics
             statistics.main()
