@@ -48,18 +48,18 @@ def pomodoro_timer():
                 time.sleep(1)
                 duration_seconds -= 1
                 progress_bar.update(1)
+    
     selected_task.time_spent += task_duration * 60
     tasks.save_tasks(listTask)
 
     # Notification when time is up
     notification_title = "Pomodoro Completed"
     notification_message = f"Task: {task_name}\nTime: {task_duration} minutes is up!"
-    notification.notify(
-        title=notification_title,
-        message=notification_message,
-        app_name='Pomodoro Timer'
-    )
-    erase_task= input("Do you want to mark the task as completed: Y/N")
+    
+    toaster = ToastNotifier()
+    toaster.show_toast(notification_title, notification_message, duration=10)
+
+    erase_task = input("Do you want to mark the task as completed: Y/N")
     if erase_task == "Y" or erase_task == "y":
         tasks.close_task(listTask)
     

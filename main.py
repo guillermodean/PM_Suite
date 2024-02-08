@@ -1,6 +1,6 @@
 # main.py
 
-from scripts import arrange, mickey, pomodoro, tasks, encrypt, intelligent,excuses, statistics  # Import the statistics module
+from scripts import arrange, mickey, pomodoro, tasks, encrypt, intelligent,excuses, statistics, notes  # Import the statistics module
 import sys
 from os import path
 from pyfiglet import Figlet
@@ -69,7 +69,8 @@ def menu():
     print("8. Find something intelligent to say in a meeting")
     print("9. Need an excuse? Project delay?")
     print("10. Show Statistics")  # New option to show statistics
-    print("11. Exit")
+    print("11. Notes")
+    print("12. Exit")
     print("--------------------------------------------------------------------------------------------------------")
 def get_main_dir_path():
     return getattr(sys, '_MEIPASS', path.abspath(path.dirname(__file__)))
@@ -113,6 +114,8 @@ def main():
            # Calculate and display statistics
             statistics.main()
         elif choice == '11':
+            notes.main_notes()
+        elif choice == '12':
             print("Exiting.")
             sys.exit()
         else:
