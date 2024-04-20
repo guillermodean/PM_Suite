@@ -45,6 +45,11 @@ Welcome to PM Suite, the ultimate project management solution for Project Manage
 - [x] Random engineering jargon
 - [x] Link the task to the pomodoro timer, time spent on a task will be added to the task.
 - [x] Excuses generator baby!
+- [x] Encrypt and decrypt secrets folder
+- [x] Organize desktop
+- [x] List organization
+- [x] Simple Notepad
+- [ ] Add a GUI
 - [ ] Unix friendly
 - [ ] Much more...
 
@@ -67,6 +72,10 @@ cd pmsuite
 pip install -r requirements.txt
 ```
 To get started, just blindly run the `main.py` script and let PM Suite take control. Don't worry; you're in capable (sort of) hands.
+
+```bash
+python main.py
+```
 
 ### Economic Support
 

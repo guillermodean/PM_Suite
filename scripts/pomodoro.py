@@ -31,7 +31,12 @@ def pomodoro_timer():
     print(selected_task.name)
     task_name = selected_task.name
     utils.fancy_print("")
-    task_duration = int(input("Enter the duration of the Pomodoro in minutes: "))
+    while True:
+        try:
+            task_duration = int(input("Enter the duration of the Pomodoro in minutes: "))
+            break
+        except ValueError:
+            print("Invalid input. Please enter an integer.")
 
     duration_seconds = task_duration * 60
     # Setup tqdm progress bar

@@ -98,7 +98,7 @@ def main():
             tasks.listtask()
         elif choice == '6':
             encryption_key = encrypt.generate_key()
-            secrets_folder_path = path.join(os.path.join(path.expanduser('~')), 'Desktop', 'organization', 'secrets')
+            secrets_folder_path = path.join(path.join(path.expanduser('~')), 'Desktop', 'organization', 'secrets')
             encrypt.encrypt_folder(encryption_key, secrets_folder_path)
         elif choice == '7':
             key_path = input("Enter the path of the encryption key file: ")

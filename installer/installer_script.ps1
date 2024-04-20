@@ -78,6 +78,8 @@ try {
 
 
     Write-Host "Installation completed. You can now run 'pm_suite' in PowerShell to start the program."
+
+    
 }
 catch {
     # Log any errors
